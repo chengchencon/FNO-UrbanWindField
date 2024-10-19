@@ -1,4 +1,3 @@
-# import all modules and our model layers
 import torch
 import numpy as np
 import torch.nn as nn
@@ -10,7 +9,6 @@ import operator
 from functools import reduce
 from functools import partial
 from timeit import default_timer
-#from Adam import Adam
 from tensorflow.keras.optimizers import Adam
 torch.manual_seed(3407)
 np.random.seed(0)
@@ -212,6 +210,8 @@ if sdf_data_path:
 
 # Prepare data loader
 batch_size = 100
+if train_a.shape[1]!=64 :
+    batch_size = 50
 train_loader = torch.utils.data.DataLoader(torch.utils.data.TensorDataset(train_a, train_u), batch_size=batch_size, shuffle=True, pin_memory=True)
 
 # Initialize model
@@ -238,7 +238,6 @@ else:
 
 # Training loop
 epochs = 100
-
 for ep in tqdm(range(epochs_done, epochs)):
     model.train() # we let it train!
     t1 = default_timer() # ok we get a timer
@@ -263,7 +262,7 @@ for ep in tqdm(range(epochs_done, epochs)):
             'model_state_dict': model.state_dict(),
             'optimizer_state_dict': optimizer.state_dict(),
             'scheduler_state_dict': scheduler.state_dict()
-            }, model_path+'.pt')
+            }, model_path)
     print(f'saved epoch {ep} successfully!')
     
     
