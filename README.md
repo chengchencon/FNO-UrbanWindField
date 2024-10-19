@@ -21,12 +21,27 @@ The following datasets were used in this project:
 
 
 ### Test Datasets
-1. **Niigata_West_2m_UpDown_SDF.npy** - This dataset contains up-down sampled data for testing purposes.
-2. **Niigata_West_2m_UpDown.npy** - This dataset includes the up-down sampled data used for testing.
+1. **Niigata_West_2m_UpDown.npy** - This dataset includes the up-down sampled data used for testing.
+2. **Niigata_West_2m_UpDown_SDF.npy** - This dataset contains up-down sampled data for testing purposes.
+3. **Niigata_West_2m_UpDown.npy** - This dataset includes the up-down sampled data used for testing.
+4. **Niigata_West_2m_UpDown.npy** - This dataset includes the up-down sampled data used for testing.
+5. **Niigata_West_2m_UpDown.npy** - This dataset includes the up-down sampled data used for testing.
+6. **Niigata_West_2m_UpDown.npy** - This dataset includes the up-down sampled data used for testing.
+7. **Niigata_West_2m_UpDown.npy** - This dataset includes the up-down sampled data used for testing.
+8. **Niigata_West_2m_UpDown.npy** - This dataset includes the up-down sampled data used for testing.
+9. **Niigata_West_2m_UpDown.npy** - This dataset includes the up-down sampled data used for testing.
+10. **Niigata_West_2m_UpDown.npy** - This dataset includes the up-down sampled data used for testing.
+11. **Niigata_West_2m_UpDown.npy** - This dataset includes the up-down sampled data used for testing.
+12. **Niigata_West_2m_UpDown.npy** - This dataset includes the up-down sampled data used for testing.
 
 ### Training Datasets
-1. **Niigata_West_2m_WholeSDF.npy** - This dataset contains the whole SDF data used for training.
-2. **Niigata_west_2m.npy** - This dataset includes the 2m height wind data used for training.
+
+1. **Niigata_west_2m.npy** - This dataset includes the 2m height wind data used for training.
+2. **Niigata_West_2m_WholeSDF.npy** - This dataset contains the whole SDF data used for training.
+3. **Niigata_west_2m.npy** - This dataset includes the 2m height wind data used for training.
+4. **Niigata_west_2m.npy** - This dataset includes the 2m height wind data used for training.
+   
+
 
 
 ## Contributing
