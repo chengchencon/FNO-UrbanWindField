@@ -188,7 +188,7 @@ T_in = 5
 T_out = 10
 train_a = data_train[:, :, :, :T_in]
 train_u = data_train[:, :, :, T_in:T_in + T_out]
-
+patch_size = data_train.shape[1]
 # Torch-lize data
 train_a = torch.Tensor(train_a)
 train_u = torch.Tensor(train_u)
@@ -217,6 +217,12 @@ train_loader = torch.utils.data.DataLoader(torch.utils.data.TensorDataset(train_
 # Initialize model
 modes = 32
 width = 48
+
+if patch_size == 256:
+    batch_size = 50
+    modes = 16
+    width = 24
+    
 model = FNO2d(inputNum, modes, modes, width)
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 model = model.to(device)
