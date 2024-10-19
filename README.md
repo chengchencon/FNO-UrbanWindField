@@ -2,7 +2,7 @@
 
 This repository contains the code necessary to reproduce the results presented in the paper "Generalization of urban wind field using Fourier Neural Operators (FNO) across different wind directions and cities". The paper explores innovative approaches and methodologies in the field of deep learning, providing valuable insights and advancements.
 
-
+![West Output](pics/20240701TestPatches5mDelta0Niigata5in25outWestComparison0.gif)
 
 ## Table of Contents
 
