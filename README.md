@@ -54,15 +54,17 @@ The `trainscript.py` script is used to train a model. After training, the model 
 python3 trainscript.py model_path train_data_path [train_sdf_data_path]
 ```
 
-### 2. `trainscript.py`
+### 2. `testscript.py`
 
-The `trainscript.py` script is used to train a model. After training, the model will be saved to the specified path.
+The `testscript.py` script is used to test a pre-trained model. After testing, the predicted results and ground truth will be saved as `.npy` files.
 
 **Usage:**
 
 ```bash
-python3 trainscript.py model_path train_data_path [train_sdf_data_path]
+python3 testscript.py model_path train_data_path [train_sdf_data_path] test_data_path [test_sdf_data_path]
 ```
+
+
 
 ## Contributing
 
