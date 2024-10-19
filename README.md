@@ -17,7 +17,8 @@ This repository contains the code necessary to reproduce the results presented i
 ### Data link
 The following datasets were used in this project:
 
-https://drive.google.com/drive/folders/1QFJfiYjhq7O8VLob6MqcXUG-_9ajwDIK
+[https://drive.google.com/drive/folders/1WDyBN6npsM2jiVIOl7QrFhZKiI6UJybV]
+
 
 ### Test Datasets
 1. **Niigata_West_2m_UpDown_SDF.npy** - This dataset contains up-down sampled data for testing purposes.
