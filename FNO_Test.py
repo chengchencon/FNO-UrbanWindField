@@ -160,44 +160,44 @@ class FNO2d(nn.Module):
         gridy = gridy.reshape(1, 1, size_y, 1).repeat([batchsize, size_x, 1, 1])
         return torch.cat((gridx, gridy), dim=-1).to(device)
 
-# 检查命令行参数
+# check command line parameters
 if len(sys.argv) < 5:
     print("Usage: python3 script_name.py model_path train_data_path [train_sdf_data_path] test_data_path [test_sdf_data_path]")
     sys.exit(1)
 
-# 从命令行获取参数
+# get command line parameters
 model_path = sys.argv[1]
 train_data_path = sys.argv[2]
 train_sdf_data_path = sys.argv[3] if len(sys.argv) > 3 and sys.argv[3].endswith('.npy') else None
 test_data_path = sys.argv[3] if train_sdf_data_path is None else sys.argv[4]
 test_sdf_data_path = sys.argv[4] if train_sdf_data_path is None else (sys.argv[5] if len(sys.argv) > 4 else None)
 
-# 确保模型路径存在
+# make sure the model path exists
 if not os.path.exists(model_path):
     print(f"Error: Model path '{model_path}' does not exist.")
     sys.exit(1)
 
-# 确保训练数据路径存在
+# make sure the training data path exists
 if not os.path.exists(train_data_path):
     print(f"Error: Training data path '{train_data_path}' does not exist.")
     sys.exit(1)
 
-# 确保测试数据路径存在
+# make sure the test data path exists
 if not os.path.exists(test_data_path):
     print(f"Error: Test data path '{test_data_path}' does not exist.")
     sys.exit(1)
 
-# 如果提供了训练 SDF 数据路径，确保其存在
+# make sure the training SDF data path exists it it is offered
 if train_sdf_data_path and not os.path.exists(train_sdf_data_path):
     print(f"Error: Train SDF data path '{train_sdf_data_path}' does not exist.")
     sys.exit(1)
 
-# 如果提供了测试 SDF 数据路径，确保其存在
+# make sure the test SDF data path exists it it is offered
 if test_sdf_data_path and not os.path.exists(test_sdf_data_path):
     print(f"Error: Test SDF data path '{test_sdf_data_path}' does not exist.")
     sys.exit(1)
 
-# 加载训练数据
+# load traning data
 print("Loading training data for initialization...")
 data_train = np.load(train_data_path)
 ntrain = data_train.shape[0]
@@ -207,17 +207,17 @@ T_out = 10
 train_a = data_train[:, :, :, :T_in]
 train_u = data_train[:, :, :, T_in:]
 patch_size = train_a.shape[1]
-# 将训练数据转换为 Tensor
+# Tensorlize data
 train_a = torch.Tensor(train_a)
 train_u = torch.Tensor(train_u)
 
-# 数据归一化
+# normalization
 a_normalizer = GaussianNormalizer(train_a)
 train_a = a_normalizer.encode(train_a)
 y_normalizer = GaussianNormalizer(train_u)
 train_u = y_normalizer.encode(train_u)
 
-# 如果提供了训练 SDF 数据路径，则加载和处理 SDF 数据
+# load and deal with SDF training data if it is offered
 if train_sdf_data_path:
     sdf_train = np.load(train_sdf_data_path)
     sdf_train = torch.from_numpy(sdf_train).unsqueeze(-1).float()
@@ -225,7 +225,7 @@ if train_sdf_data_path:
     sdf_train = sdf_a_normalizer.encode(sdf_train)
     train_a = torch.cat((train_a, sdf_train), -1)
 
-# 加载测试数据
+# load test data
 print("Loading test data...")
 data_test = np.load(test_data_path)
 ntest = data_test.shape[0]
@@ -233,22 +233,22 @@ print(data_test.shape)
 test_a = data_test[:, :, :, :T_in]
 test_u = data_test[:, :, :, T_in:]
 
-# 将测试数据转换为 Tensor
+# tensorlize
 test_a = torch.Tensor(test_a)
 test_u = torch.Tensor(test_u)
 
-# 使用训练数据的归一化器对测试数据进行归一化
+# normlization 
 test_a = a_normalizer.encode(test_a)
 # test_u = y_normalizer.encode(test_u)
 
-# 如果提供了测试 SDF 数据路径，则加载和处理 SDF 数据
+# load SDF test data if it is offered
 if test_sdf_data_path:
     sdf_test = np.load(test_sdf_data_path)
     sdf_test = torch.from_numpy(sdf_test).unsqueeze(-1).float()
     sdf_test = sdf_a_normalizer.encode(sdf_test)
     test_a = torch.cat((test_a, sdf_test), -1)
 
-# 初始化模型和设备
+# initialize model setting
 batch_size = 16
 modes = 32
 width = 48
@@ -258,12 +258,12 @@ if patch_size == 256:
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 model = FNO2d(modes, modes, width).to(device)
 
-# 加载模型
+# load the model
 print(f"Loading model from {model_path}...")
 checkpoint = torch.load(model_path, map_location=device)
 model.load_state_dict(checkpoint['model_state_dict'])
 
-# 准备测试数据加载器
+# load test data
 
 test_loader = torch.utils.data.DataLoader(torch.utils.data.TensorDataset(test_a, test_u), batch_size=batch_size, shuffle=False, pin_memory=True)
 timeList = []
