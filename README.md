@@ -22,25 +22,25 @@ The following datasets were used in this project:
 
 ### Training Datasets
 
-1. **Niigata_west_2m.npy** - This dataset includes the 2m height wind data used for training.
-2. **Niigata_West_2m_WholeSDF.npy** - This dataset contains the whole SDF data used for training.
-3. **Niigata_west_2m.npy** - This dataset includes the 2m height wind data used for training.
-4. **Niigata_west_2m.npy** - This dataset includes the 2m height wind data used for training.
-   
+1. **NiigataTrain_256x256Whole_West_1020steps_5in10out.npy** - The training dataset for Niigata's west wind field, includes whole 256x256 data over 1020 steps.
+2. **NiigataTrain_256x256Whole_West_1020steps_5in10out_SDF.npy** - SDF data corresponding to the Niigata whole 256x256 west wind field training dataset.
+3. **NiigataTrain_64x64Patches_West_1020steps_5in10out.npy** - The training dataset for Niigata's west wind field, includes 64x64 patches over 1020 steps.
+4. **NiigataTrain_64x64Patches_West_1020steps_5in10out_SDF.npy** - SDF data for the Niigata 64x64 patches west wind field training dataset.
 
 ### Test Datasets
-1. **Niigata_West_2m_UpDown.npy** - This dataset includes the up-down sampled data used for testing.
-2. **Niigata_West_2m_UpDown_SDF.npy** - This dataset contains up-down sampled data for testing purposes.
-3. **Niigata_West_2m_UpDown.npy** - This dataset includes the up-down sampled data used for testing.
-4. **Niigata_West_2m_UpDown.npy** - This dataset includes the up-down sampled data used for testing.
-5. **Niigata_West_2m_UpDown.npy** - This dataset includes the up-down sampled data used for testing.
-6. **Niigata_West_2m_UpDown.npy** - This dataset includes the up-down sampled data used for testing.
-7. **Niigata_West_2m_UpDown.npy** - This dataset includes the up-down sampled data used for testing.
-8. **Niigata_West_2m_UpDown.npy** - This dataset includes the up-down sampled data used for testing.
-9. **Niigata_West_2m_UpDown.npy** - This dataset includes the up-down sampled data used for testing.
-10. **Niigata_West_2m_UpDown.npy** - This dataset includes the up-down sampled data used for testing.
-11. **Niigata_West_2m_UpDown.npy** - This dataset includes the up-down sampled data used for testing.
-12. **Niigata_West_2m_UpDown.npy** - This dataset includes the up-down sampled data used for testing.
+
+1. **MontrealTest_64x64Patches_West_221steps.npy** - Test dataset for Montreal's west wind field using 64x64 patches over 221 steps.
+2. **MontrealTest_64x64Patches_West_221steps_SDF.npy** - SDF data corresponding to the Montreal west wind field test dataset.
+3. **NiigataTest_256x256Whole_NorthRotated90_1020steps.npy** - Test dataset for Niigata's north wind field, rotated 90 degrees, with whole 256x256 data over 1020 steps.
+4. **NiigataTest_256x256Whole_NorthRotated90_1020steps_SDF.npy** - SDF data corresponding to the Niigata whole 256x256 north wind field test dataset (rotated 90 degrees).
+5. **NiigataTest_64x64Patches_North_1020steps.npy** - Test dataset for Niigata's north wind field using 64x64 patches over 1020 steps.
+6. **NiigataTest_64x64Patches_North_1020steps_SDF.npy** - SDF data for the Niigata north wind field test dataset using 64x64 patches.
+7. **NiigataTest_64x64Patches_NorthRotated90_1020steps.npy** - Test dataset for Niigata's north wind field, rotated 90 degrees, using 64x64 patches over 1020 steps.
+8. **NiigataTest_64x64Patches_NorthRotated90_1020steps_SDF.npy** - SDF data corresponding to the Niigata 64x64 patches north wind field test dataset (rotated 90 degrees).
+9. **NiigataTest_64x64Patches_West_1020steps.npy** - Test dataset for Niigata's west wind field using 64x64 patches over 1020 steps.
+10. **NiigataTest_64x64Patches_West_1020steps_SDF.npy** - SDF data for the Niigata west wind field test dataset using 64x64 patches.
+11. **NiigataTest_64x64Patches_WestVerticallyFlipped_1020steps.npy** - Test dataset for Niigata's vertically flipped west wind field using 64x64 patches over 1020 steps.
+12. **NiigataTest_64x64Patches_WestVerticallyFlipped_1020steps_SDF.npy** - SDF data for the Niigata vertically flipped west wind field test dataset using 64x64 patches.
 
 ## Usage
 
