@@ -42,6 +42,19 @@ The following datasets were used in this project:
 11. **Niigata_West_2m_UpDown.npy** - This dataset includes the up-down sampled data used for testing.
 12. **Niigata_West_2m_UpDown.npy** - This dataset includes the up-down sampled data used for testing.
 
+# Usage Instructions
+
+This project provides two scripts for training and testing models: `trainscript.py` and `testscript.py`. Please follow the instructions below to use these scripts.
+
+## 1. `trainscript.py`
+
+### Purpose
+The `trainscript.py` script is used to train a model. After training, the model will be saved to the specified path.
+
+### Usage
+```bash
+python3 trainscript.py model_path train_data_path [train_sdf_data_path]
+
 
 ## Contributing
 
