@@ -1,10 +1,7 @@
-# Evaluation of FNO performance on 2D Urban Wind Field
+# Generalization of urban wind field using Fourier Neural Operators (FNO) across different wind directions and cities
 
-This repository contains the code necessary to reproduce the results presented in the paper "Evaluation of FNO performance on 2D Urban Wind Field". The paper explores innovative approaches and methodologies in the field of [insert field of study, e.g., machine learning, data science, etc.], providing valuable insights and advancements.
+This repository contains the code necessary to reproduce the results presented in the paper "Generalization of urban wind field using Fourier Neural Operators (FNO) across different wind directions and cities". The paper explores innovative approaches and methodologies in the field of deep learning, providing valuable insights and advancements.
 
-![West Output](pics/20240701TestPatches5mDelta0Niigata5in25outWestComparison0.gif)
-
-![West Train Error Vs Test Error](pics/accumulated_meanAbsoError_West_TrainVsTest.png)
 
 
 ## Table of Contents
@@ -14,39 +11,6 @@ This repository contains the code necessary to reproduce the results presented i
 - [Contributing](#contributing)
 - [License](#license)
 - [Contact](#contact)
-
-## Installation
-
-To get started with this project, you need to have Python installed. Follow the steps below to set up the environment and install the necessary libraries.
-
-1. **Clone the repository**:
-    ```bash
-    git clone https://github.com/chengchencon/FNO-Simulation.git
-    cd FNO-Simulation
-    ```
-
-2. **Create a virtual environment** (optional but recommended):
-    ```bash
-    python3 -m venv env
-    source env/bin/activate  # On Windows use `env\Scripts\activate`
-    ```
-
-3. **Install the required libraries**:
-    ```bash
-    pip3 install -r requirements.txt
-    ```
-
-## Usage
-
-After setting up the environment and installing the necessary libraries, you can run the script to get the results.
-
-1. **Run the model script**:
-    ```bash
-    python3 FNO_Simulation_Train.py
-    ```
-
-2. **Check the output**:
-    The results will be saved in the `results` directory. You can modify the script or use different input data as needed.
 
 ## Datasets
 
