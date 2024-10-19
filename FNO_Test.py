@@ -252,6 +252,9 @@ if test_sdf_data_path:
 batch_size = 16
 modes = 32
 width = 48
+if patch_size == 256:
+    modes = 16
+    width = 24
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 model = FNO2d(modes, modes, width).to(device)
 
