@@ -52,7 +52,7 @@ This project provides two scripts for training and testing models: `trainscript.
 The `trainscript.py` script is used to train a model. After training, the model will be saved to the specified path.
 
 ### Usage
-```bash
+
 python3 trainscript.py model_path train_data_path [train_sdf_data_path]
 
 
