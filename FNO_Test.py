@@ -142,7 +142,6 @@ class FNO2d(nn.Module):
         x = x1 + x2
         x = F.gelu(x)     
         
-        
         x1 = self.norm(self.conv3(self.norm(x)))
         x1 = self.mlp3(x1)
         x2 = x
@@ -161,7 +160,6 @@ class FNO2d(nn.Module):
         gridy = gridy.reshape(1, 1, size_y, 1).repeat([batchsize, size_x, 1, 1])
         return torch.cat((gridx, gridy), dim=-1).to(device)
 
-
 # 检查命令行参数
 if len(sys.argv) < 5:
     print("Usage: python3 script_name.py model_path train_data_path [train_sdf_data_path] test_data_path [test_sdf_data_path]")
@@ -170,7 +168,7 @@ if len(sys.argv) < 5:
 # 从命令行获取参数
 model_path = sys.argv[1]
 train_data_path = sys.argv[2]
-train_sdf_data_path = sys.argv[3] if len(sys.argv) > 3 and not sys.argv[3].endswith('.npy') else None
+train_sdf_data_path = sys.argv[3] if len(sys.argv) > 3 and sys.argv[3].endswith('.npy') else None
 test_data_path = sys.argv[3] if train_sdf_data_path is None else sys.argv[4]
 test_sdf_data_path = sys.argv[4] if train_sdf_data_path is None else (sys.argv[5] if len(sys.argv) > 4 else None)
 
@@ -208,7 +206,7 @@ T_out = 10
 
 train_a = data_train[:, :, :, :T_in]
 train_u = data_train[:, :, :, T_in:]
-
+patch_size = train_a.shape[1]
 # 将训练数据转换为 Tensor
 train_a = torch.Tensor(train_a)
 train_u = torch.Tensor(train_u)
@@ -231,7 +229,7 @@ if train_sdf_data_path:
 print("Loading test data...")
 data_test = np.load(test_data_path)
 ntest = data_test.shape[0]
-
+print(data_test.shape)
 test_a = data_test[:, :, :, :T_in]
 test_u = data_test[:, :, :, T_in:]
 
@@ -251,6 +249,7 @@ if test_sdf_data_path:
     test_a = torch.cat((test_a, sdf_test), -1)
 
 # 初始化模型和设备
+batch_size = 16
 modes = 32
 width = 48
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
@@ -262,9 +261,9 @@ checkpoint = torch.load(model_path, map_location=device)
 model.load_state_dict(checkpoint['model_state_dict'])
 
 # 准备测试数据加载器
-batch_size = 16
-test_loader = torch.utils.data.DataLoader(torch.utils.data.TensorDataset(test_a, test_u), batch_size=batch_size, shuffle=False, pin_memory=True)
 
+test_loader = torch.utils.data.DataLoader(torch.utils.data.TensorDataset(test_a, test_u), batch_size=batch_size, shuffle=False, pin_memory=True)
+timeList = []
 with torch.no_grad():
     for x, y in test_loader:
         x, y = x.to(device), y.to(device)
@@ -284,12 +283,7 @@ with torch.no_grad():
             out = torch.cat((out,tmpout),dim=3)
             # print(out.shape)
         out = y_normalizer.decode(out)
-        for homme in range(total_frame):
-            train_step_rela = torch.mean(torch.sqrt(torch.mean(torch.square(out[:,:,:,homme] - y[:,:,:,homme]), axis = (1,2)) / torch.mean(torch.square(y[:,:,:,homme]), axis = (1,2))))
-            tttList.append(train_step_rela)
-        totaltttList.append(tttList)
-        out = out[:,:,:,:total_frame]
-        relative_error_test = torch.mean(torch.sqrt(torch.mean(torch.square(out - y[:,:,:,:total_frame]), axis = (1,2)) / torch.mean(torch.square(y[:,:,:,:total_frame]), axis = (1,2))))
+        print(out.shape)
 
 # Function to reshape and save tensors
 def reshape_and_save(tensor, filename):
