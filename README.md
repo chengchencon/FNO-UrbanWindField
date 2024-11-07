@@ -46,22 +46,22 @@ The following datasets were used in this project:
 
 ### 1. `Train_FNO.py`
 
-The `trainscript.py` script is used to train a model. After training, the model will be saved to the specified path.
+The `Train_FNO.py` script is used to train a model. After training, the model will be saved to the specified path.
 
 **Usage:**
 
 ```bash
-python3 trainscript.py model_path train_data_path [train_sdf_data_path]
+python3 Train_FNO.py model_path train_data_path [train_sdf_data_path]
 ```
 
 ### 2. `Test_FNO.py`
 
-The `testscript.py` script is used to test a pre-trained model. After testing, the predicted results and ground truth will be saved as `.npy` files.
+The `Test_FNO.py` script is used to test a pre-trained model. After testing, the predicted results and ground truth will be saved as `.npy` files.
 
 **Usage:**
 
 ```bash
-python3 testscript.py model_path train_data_path [train_sdf_data_path] test_data_path [test_sdf_data_path]
+python3 Test_FNO.py model_path train_data_path [train_sdf_data_path] test_data_path [test_sdf_data_path]
 ```
 
 
