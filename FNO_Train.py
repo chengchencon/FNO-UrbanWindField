@@ -125,12 +125,6 @@ class FNO2d(nn.Module):
         self.mlp2 = MLP(self.width, self.width, self.width)
         self.mlp3 = MLP(self.width, self.width, self.width)
 
-        
-        self.w0 = nn.Conv2d(self.width, self.width, 1)
-        self.w1 = nn.Conv2d(self.width, self.width, 1)
-        self.w2 = nn.Conv2d(self.width, self.width, 1)
-        self.w3 = nn.Conv2d(self.width, self.width, 1)
-
         self.norm = nn.InstanceNorm2d(self.width)
         self.q = MLP(self.width, 10, self.width * 4) 
 
